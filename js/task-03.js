@@ -17,12 +17,17 @@ const images = [
 
 const imageList = document.querySelector(".gallery");
 
-for (const img of images) {
-  let newElement = document.createElement("li");
-  let newImg = document.createElement("img");
-  newImg.setAttribute("src", img.url);
-  newImg.setAttribute("alt", img.alt);
-  imageList.append(newElement);
-  newElement.append(newImg);
+
+function addImg (images) {
+  const markup = [...images]
+    .map(({url, alt}) => (`
+    <li>
+      <img src=${url} 
+           alt=${alt}/>
+    </li>`))
+    .join('');
+
+  imageList.insertAdjacentHTML('afterbegin', markup) 
 }
 
+addImg(images);

@@ -10,8 +10,13 @@ const ingredients = [
 ];
 
 const ingredientsList = document.querySelector("#ingredients");
-for (const product of ingredients) {
-  let newElement = document.createElement("li");
-  newElement.textContent = product;
-  ingredientsList.append(newElement);
-}
+const totalAppend = document.createDocumentFragment();
+
+ingredients.forEach(ingredient => {
+  const listLi = document.createElement("li");
+  listLi.textContent = ingredient;
+  listLi.classList.add("item");
+  totalAppend.appendChild(listLi);
+});
+
+ingredientsList.appendChild(totalAppend);
